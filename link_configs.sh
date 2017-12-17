@@ -28,4 +28,3 @@ done
 # TODO - Way to list other config files manually
 
 echo "$0: Finished on $(date)."
-
