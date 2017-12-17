@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo ""
+echo "$0: Start on $(date)..."
+
 if [ -z "$BACKUP_DIR" ]
 then
   echo "Need environment var: \$BACKUP_DIR"
@@ -23,3 +26,6 @@ do
 done
 
 # TODO - Way to list other config files manually
+
+echo "$0: Finished on $(date)."
+
