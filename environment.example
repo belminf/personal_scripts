@@ -1,0 +1,20 @@
+# Backup directory
+BACKUP_DIR=~/backups
+
+# Github user to backup
+BACKUP_GH_USER=belminf
+
+# Volume group for root LV
+VG=my_arch_vg
+
+# Root LV
+ROOT_LV=root_lv
+
+# How big to make snapshot volume
+SNAPSHOT_GB=5
+
+# Where to save snapshot
+SNAPSHOT_DIR="${BACKUP_DIR}/snapshots
+
+# Where AUR repos are stored
+AUR_DIR="~/aur"
