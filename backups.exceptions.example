@@ -1,4 +1,4 @@
-.cache
-.config/chromium/
-aur
-Downloads
+/.cache
+/.config/chromium
+/aur
+/Downloads
