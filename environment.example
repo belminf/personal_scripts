@@ -1,11 +1,23 @@
 # Backup directory
-export BACKUP_DIR=~/backups
+export BACKUP_DIR="/home/bf/backups"
 
 # Where to log backup output
 export BACKUP_LOG="${BACKUP_DIR}/backups.log"
 
 # Where to get backup exceptions
 export BACKUP_EXCEPTIONS="${BACKUP_DIR}/scripts/backups.exceptions"
+
+# Backup source
+export BACKUP_SOURCE="/home/bf"
+
+# rsync.net target
+# Set up in ~/.ssh/config with something like:
+#
+# Host rsync
+#        User <rsync username>
+#	IdentityFile <rsync ssh id file>
+#	HostName <rsync host>
+export BACKUP_TARGET="rsync:my_backups"
 
 # Github user to backup
 export BACKUP_GH_USER=belminf
@@ -23,4 +35,4 @@ export SNAPSHOT_GB=5
 export SNAPSHOT_DIR="${BACKUP_DIR}/snapshots"
 
 # Where AUR repos are stored
-export AUR_DIR="~/aur"
+export AUR_DIR="/home/bf/aur"
