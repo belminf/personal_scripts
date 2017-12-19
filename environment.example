@@ -4,6 +4,9 @@ export BACKUP_DIR="/home/bf/backups"
 # Where to log backup output
 export BACKUP_LOG="${BACKUP_DIR}/backups.log"
 
+# Where to log backup output
+export UPDATE_LOG="${BACKUP_DIR}/updates.log"
+
 # Where to get backup exceptions
 export BACKUP_EXCEPTIONS="${BACKUP_DIR}/scripts/backups.exceptions"
 
