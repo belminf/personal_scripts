@@ -11,4 +11,4 @@ Archlinux is my main distro so a lot of this is catered to that.
 * `getmail` - Used to backup Gmail
 
 ## Setup
-Create `environment` and `backups.exceptions`
+Create `.environment` based off `.environment.example`
