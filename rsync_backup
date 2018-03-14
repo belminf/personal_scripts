@@ -1,24 +1,20 @@
 #!/usr/bin/env bash
 
+# Break on error
+set -e
+
 # Get import dir
 SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 
-# Source config
-source "${SCRIPT_DIR}/environment"
+# Source shared files
+source "${SCRIPT_DIR}/.environment"
+source "${SCRIPT_DIR}/.functions"
 
-# Log to backup log
-exec > $BACKUP_LOG 2>&1
+# Log start
+console_log "$0: Starting..."
 
-echo "$0: Start on $(date)..."
+# Perform rsync
+eval rsync -avh --delete --delete-excluded --exclude-from "${RSYNC_EXCLUDE_FROM}" "${RSYNC_BACKUP_SOURCE}/" "${RSYNC_BACKUP_TARGET}"
 
-echo "$0: Going through sync scripts..."
-for s in ${SCRIPT_DIR}/sync/*.sh
-do
-  $s
-done
-
-echo "$0: Running rsync.."
-cd $BACKUP_SOURCE
-rsync -avh --delete --exclude-from $BACKUP_EXCEPTIONS . $BACKUP_TARGET
-
-echo "$0: Finished on $(date)."
+# Log finish
+console_log "$0: Finished."
