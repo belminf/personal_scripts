@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# Break on error
+set -e
+
+# Get import dir
+SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
+
+# Source shared files
+source "${SCRIPT_DIR}/.environment"
+source "${SCRIPT_DIR}/.functions"
+
+# Log start
+console_log "$0: Starting..."
+
+# Go through all modified configs
+for f in $(pacman -Qii | awk '/^MODIFIED/ {print $2}')
+do
+
+  # Print file
+  console_log "Linking config ${f}..."
+
+  # Create directory in backup
+  mkdir -p ${CONFIG_BACKUP_DIR}$(dirname $f)
+
+  # Create a symlink
+  ln -sf $f ${CONFIG_BACKUP_DIR}${f}
+done
+
+# Log finish
+echo "$0: Finished on $(date)."
