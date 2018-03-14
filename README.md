@@ -18,6 +18,8 @@ Updates pacman packages and AUR packages. As a precaution, dumps a snapshot of t
 Configure applicable environment variables (`ARCH_UPDATE_*`) in `.environment`
 
 ## rsync_backup
+**Requires:** `rsync`
+
 Copies local files to rsync.net.
 
 Configure applicable environment variables (`RSYNC_*`) in `.environment`
