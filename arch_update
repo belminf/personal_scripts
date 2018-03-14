@@ -13,6 +13,10 @@ source "${SCRIPT_DIR}/.functions"
 # Log start
 console_log "$0: Starting..."
 
+# Cleaning up old snapshots
+console_log "Delete old snapshots..."
+find ${ARCH_UPDATE_SNAPSHOT_DIR} -mtime +${ARCH_UPDATE_SNAPSHOT_KEEP_DAYS} -delete
+
 # Create snapshot LV
 console_log "Creating LVM snapshot..."
 sudo lvcreate --snapshot -L 2GB -n ${ARCH_UPDATE_ROOT_LV}-snap /dev/${ARCH_UPDATE_VG}/${ARCH_UPDATE_ROOT_LV} || (console_log "ERROR - Re-run after cleanup: sudo lvremove $ARCH_UPDATE_VG/${ARCH_UPDATE_ROOT_LV}-snap" && exit 1)
