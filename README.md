@@ -1,14 +1,20 @@
-# backup_scripts
+# personal_scripts
 
-Scripts I use to backup my homedir and cloud data to rsync.net.
-
-Archlinux is my main distro so a lot of this is catered to that.
-
-## Pre-requisites
-* `rsync` - Used to backup to rsync.net
-* `git` - Used to pull Github repos
-* `rclone` - Used for GDrive backup
-* `getmail` - Used to backup Gmail
+A collection of utility scripts I use. Archlinux is my primary distro so a lot of this is catered to that.
 
 ## Setup
 Create `.environment` based off `.environment.example`
+
+## Configuring scripts
+
+### rsync_backup
+Copies local files to rsync.net.
+
+Configure applicable environment variables (`RSYNC_*`) in `.environment`
+
+### backup_gdrive
+Backs up Google Drive.
+
+1. Install `rlcone`
+2. Configure source via `rclone config`
+3. Configure applicable environment variables (`GDRIVE_*`) in `.environment`

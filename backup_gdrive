@@ -1,16 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-echo ""
-echo "$0: Start on $(date)..."
+# Break on error
+set -e
 
-if [ -z "$BACKUP_DIR" ]
-then
-  echo "Need environment var: \$BACKUP_DIR"
-  exit 1
-fi
+# Get import dir
+SCRIPT_DIR="$(dirname "${BASH_SOURCE[0]}")"
 
-GDRIVE_BACKUP_DIR="${BACKUP_DIR}/cloud/gdrive"
+# Source shared files
+source "${SCRIPT_DIR}/.environment"
+source "${SCRIPT_DIR}/.functions"
 
-rclone sync --drive-auth-owner-only --exclude 'Plex Cloud Sync/*' gdrive: $GDRIVE_BACKUP_DIR
+# Log start
+console_log "$0: Starting..."
 
-echo "$0: Finished on $(date)."
+# Perform rclone
+eval rclone sync --drive-auth-owner-only ${GDRIVE_EXTRA_PARAMS} ${GDRIVE_BACKUP_SOURCE} ${GDRIVE_BACKUP_TARGET}
+
+# Log finish
+console_log "$0: Finished."
