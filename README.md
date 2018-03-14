@@ -7,6 +7,16 @@ Create `.environment` based off `.environment.example`
 
 # Scripts
 
+## arch_link_configs
+Create symlinks to configuration files that have changed since pacman packages were installed.
+
+Configure target via `CONFIG_BACKUP_DIR` in `.environment`.
+
+## arch_update
+Updates pacman packages and AUR packages. As a precaution, dumps a snapshot of the root logical volume.
+
+Configure applicable environment variables (`ARCH_UPDATE_*`) in `.environment`
+
 ## rsync_backup
 Copies local files to rsync.net.
 
@@ -44,3 +54,4 @@ read_all = false
 delivered_to = false
 received = false
 ```
+

@@ -15,15 +15,15 @@ console_log "$0: Starting..."
 
 # Create snapshot LV
 console_log "Creating LVM snapshot..."
-sudo lvcreate --snapshot -L 2GB -n ${ROOT_LV}-snap /dev/${VG}/${ROOT_LV} || (console_log "ERROR - Re-run after cleanup: sudo lvremove $VG/${ROOT_LV}-snap" && exit 1)
+sudo lvcreate --snapshot -L 2GB -n ${ARCH_UPDATE_ROOT_LV}-snap /dev/${ARCH_UPDATE_VG}/${ARCH_UPDATE_ROOT_LV} || (console_log "ERROR - Re-run after cleanup: sudo lvremove $ARCH_UPDATE_VG/${ARCH_UPDATE_ROOT_LV}-snap" && exit 1)
 
 # Create snapshot file
 console_log "Exporting snapshot to file..."
-sudo dd if=/dev/${VG}/${ROOT_LV}-snap bs=100M | gzip -c -9 > ${SNAPSHOT_DIR}/${ROOT_LV}-snap-$(date +"%F").gz
+sudo dd if=/dev/${ARCH_UPDATE_VG}/${ARCH_UPDATE_ROOT_LV}-snap bs=100M | gzip -c -9 > ${ARCH_UPDATE_SNAPSHOT_DIR}/${ARCH_UPDATE_ROOT_LV}-snap-$(date +"%F").gz
 
 # Remove snapshot LV
 console_log "Deleting LVM snapshot.."
-sudo lvremove -y ${VG}/${ROOT_LV}-snap
+sudo lvremove -y ${ARCH_UPDATE_VG}/${ARCH_UPDATE_ROOT_LV}-snap
 
 # Run the update
 console_log "Pacman update..."
@@ -31,7 +31,7 @@ yes | sudo pacman -Syu
 
 # Go through AUR dirs
 console_log "AUR upgrade..."
-for this_aur in ${AUR_DIR}/*
+for this_aur in ${ARCH_UPDATE_AUR_DIR}/*
 do
   cd ${this_aur}
   git pull > /dev/null
