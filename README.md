@@ -5,14 +5,14 @@ A collection of utility scripts I use. Archlinux is my primary distro so a lot o
 ## Setup
 Create `.environment` based off `.environment.example`
 
-## Configuring scripts
+# Scripts
 
-### rsync_backup
+## rsync_backup
 Copies local files to rsync.net.
 
 Configure applicable environment variables (`RSYNC_*`) in `.environment`
 
-### backup_gdrive
+## backup_gdrive
 **Requires:** `rclone`
 
 Backs up Google Drive.
@@ -20,7 +20,7 @@ Backs up Google Drive.
 1. Configure source via `rclone config`
 2. Configure applicable environment variables (`GDRIVE_*`) in `.environment`
 
-### backup_gmail
+## backup_gmail
 **Requires:** `getmail`
 
 Wrapper for `getmail` that I use to backup Gmail. All configuration in `~/.getmail`. Example of config:
