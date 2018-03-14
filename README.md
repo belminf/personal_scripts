@@ -13,8 +13,34 @@ Copies local files to rsync.net.
 Configure applicable environment variables (`RSYNC_*`) in `.environment`
 
 ### backup_gdrive
+**Requires:** `rclone`
+
 Backs up Google Drive.
 
-1. Install `rlcone`
-2. Configure source via `rclone config`
-3. Configure applicable environment variables (`GDRIVE_*`) in `.environment`
+1. Configure source via `rclone config`
+2. Configure applicable environment variables (`GDRIVE_*`) in `.environment`
+
+### backup_gmail
+**Requires:** `getmail`
+
+Wrapper for `getmail` that I use to backup Gmail. All configuration in `~/.getmail`. Example of config:
+
+```
+[destination]
+type = Maildir
+path = ~/backups/email/johndoe@gmail.com/
+
+[retriever]
+type = SimpleIMAPSSLRetriever
+server = imap.gmail.com
+mailboxes = ("Inbox", "[Gmail]/Sent Mail")
+username = johndoe@gmail.com
+password = [APP PASS via: https://myaccount.google.com/apppasswords]
+
+[options]
+verbose = 1
+message_log = ~/backups/email/johndoe@gmail.com/log
+read_all = false
+delivered_to = false
+received = false
+```
