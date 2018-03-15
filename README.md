@@ -5,6 +5,8 @@ A collection of utility scripts I use. Archlinux is my primary distro so a lot o
 ## Setup
 Create `.environment` based off `.environment.example`
 
+Also requires `realpath` binary in the `PATH`. In Archlinux, this is provided by `core/coreutils` package.
+
 # Scripts
 
 ## arch_link_configs
