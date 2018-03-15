@@ -58,4 +58,6 @@ read_all = false
 delivered_to = false
 received = false
 ```
+## tmux_group_attach
 
+Script that properly attaches to a session group in order to share windows among multiple client sessions.
