@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Power saving for audio
+# Ref: https://wiki.archlinux.org/index.php/Power_management#Audio
+echo 'options snd_hda_intel power_save=1' >| /etc/modprobe.d/audio_powersave.conf
+
+
+# Blacklisting HDMI audio
+# Ref: https://wiki.archlinux.org/index.php/Power_management#Audio
+echo 'blacklist snd_hda_codec_hdmi' >| /etc/modprobe.d/disable_hdmi_audio.conf
+
+# Disable watchdog
+# Ref: https://wiki.archlinux.org/index.php/Power_management#Disabling_NMI_watchdog
+echo 'kernel.nmi_watchdog = 0' >| /etc/sysctl.d/disable_watchdog.conf
