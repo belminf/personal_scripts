@@ -31,16 +31,7 @@ sudo lvremove -y ${ARCH_UPDATE_VG}/${ARCH_UPDATE_ROOT_LV}-snap
 
 # Run the update
 console_log "Pacman update..."
-yes | sudo pacman -Syu
-
-# Go through AUR dirs
-console_log "AUR upgrade..."
-for this_aur in ${ARCH_UPDATE_AUR_DIR}/*
-do
-  cd ${this_aur}
-  git pull > /dev/null
-  yes | makepkg -fsi
-done
+yay -Syu --noconfirm
 
 # Log finish
 console_log "$0: Finished."
