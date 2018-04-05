@@ -10,9 +10,11 @@ Also requires `realpath` binary in the `PATH`. In Archlinux, this is provided by
 # Scripts
 
 ## arch_link_configs
+**Require:** `bash`>=4.0 (associative arrays)
+
 Create symlinks to configuration files that have changed since pacman packages were installed.
 
-Configure target via `CONFIG_BACKUP_DIR` in `.environment`.
+Configure target via `CONFIG_BACKUP_DIR` in `.environment`. Could also configure extra backups via `CONFIG_OTHER_CONFIGS` associative array where key is name of the directory created in `${CONFIG_BACKUPDIR}/others/` and the value is the backup source.
 
 ## arch_update
 Updates pacman packages and AUR packages. As a precaution, dumps a snapshot of the root logical volume.

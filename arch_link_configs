@@ -21,10 +21,20 @@ do
   console_log "Linking config ${f}..."
 
   # Create directory in backup
-  mkdir -p ${CONFIG_BACKUP_DIR}$(dirname $f)
+  mkdir -p "${CONFIG_BACKUP_DIR}$(dirname $f)"
 
   # Create a symlink
   ln -sf $f ${CONFIG_BACKUP_DIR}${f}
+done
+
+mkdir -p ${CONFIG_BACKUP_DIR}/other/
+for f in "${!CONFIG_OTHER_CONFIGS[@]}"
+do
+  # Print file
+  console_log "Linking other config ${f}..."
+
+  # Create a symlink
+  ln -sf "${CONFIG_OTHER_CONFIGS[$f]}" "${CONFIG_BACKUP_DIR}/other/${f}"
 done
 
 # Log finish
