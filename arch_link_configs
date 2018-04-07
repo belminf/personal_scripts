@@ -34,7 +34,10 @@ do
   console_log "Linking other config ${f}..."
 
   # Create a symlink
-  ln -sf "${CONFIG_OTHER_CONFIGS[$f]}" "${CONFIG_BACKUP_DIR}/other/${f}"
+  SYMLINK_TARGET="${CONFIG_BACKUP_DIR}/other/${f}"
+  rm "${SYMLINK_TARGET}"
+  ln -sf "${CONFIG_OTHER_CONFIGS[$f]}" "${SYMLINK_TARGET}"
+
 done
 
 # Log finish
