@@ -35,7 +35,7 @@ do
 
   # Create a symlink
   SYMLINK_TARGET="${CONFIG_BACKUP_DIR}/other/${f}"
-  rm "${SYMLINK_TARGET}"
+  rm "${SYMLINK_TARGET}" 2> /dev/null || true
   ln -sf "${CONFIG_OTHER_CONFIGS[$f]}" "${SYMLINK_TARGET}"
 
 done
