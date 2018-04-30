@@ -15,7 +15,7 @@ console_log "$0: Starting..."
 
 # Cleaning up old snapshots
 console_log "Delete old snapshots..."
-find ${ARCH_UPDATE_SNAPSHOT_DIR} -mtime +${ARCH_UPDATE_SNAPSHOT_KEEP_DAYS} -delete
+find ${ARCH_UPDATE_SNAPSHOT_DIR} -type f -mtime +${ARCH_UPDATE_SNAPSHOT_KEEP_DAYS} -delete
 
 # Create snapshot LV
 console_log "Creating LVM snapshot..."
