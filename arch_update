@@ -31,7 +31,7 @@ sudo lvremove -y ${ARCH_UPDATE_VG}/${ARCH_UPDATE_ROOT_LV}-snap
 
 # Run the update
 console_log "Pacman update..."
-yay -Syu --noconfirm
+yay -Syu
 
 # Log finish
 console_log "$0: Finished."
