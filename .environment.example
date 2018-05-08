@@ -3,20 +3,8 @@ BACKUP_DIR="/home/bf/.backups"
 
 
 # arch_update
-## Volume group for root LV
-ARCH_UPDATE_VG=my_lvm
-
-## Root LV
-ARCH_UPDATE_ROOT_LV=arch-root
-
-## How big to make snapshot volume
-ARCH_UPDATE_SNAPSHOT_GB=2
-
-## How many days to keep snapshot
-ARCH_UPDATE_SNAPSHOT_KEEP_DAYS=1
-
-## Where to save snapshot
-ARCH_UPDATE_SNAPSHOT_DIR="${BACKUP_DIR}/snapshots"
+## External FS
+ARCH_UPDATE_EXTERNAL_MNT=/mnt/external_backup
 
 
 # rsync_backup

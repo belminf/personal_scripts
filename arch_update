@@ -13,21 +13,13 @@ source "${SCRIPT_DIR}/.functions"
 # Log start
 console_log "$0: Starting..."
 
-# Cleaning up old snapshots
-console_log "Delete old snapshots..."
-find ${ARCH_UPDATE_SNAPSHOT_DIR} -type f -mtime +${ARCH_UPDATE_SNAPSHOT_KEEP_DAYS} -delete
-
-# Create snapshot LV
-console_log "Creating LVM snapshot..."
-sudo lvcreate --snapshot -L 2GB -n ${ARCH_UPDATE_ROOT_LV}-snap /dev/${ARCH_UPDATE_VG}/${ARCH_UPDATE_ROOT_LV} || (console_log "ERROR - Re-run after cleanup: sudo lvremove $ARCH_UPDATE_VG/${ARCH_UPDATE_ROOT_LV}-snap" && exit 1)
+# rsnapshot
+console_log "Running rsnapshot..."
+sudo rsnapshot -c "${SCRIPT_DIR}/.rsnapshot.conf" upgrade
 
 # Create snapshot file
-console_log "Exporting snapshot to file..."
-sudo dd if=/dev/${ARCH_UPDATE_VG}/${ARCH_UPDATE_ROOT_LV}-snap bs=100M | gzip -c -9 > ${ARCH_UPDATE_SNAPSHOT_DIR}/${ARCH_UPDATE_ROOT_LV}-snap-$(date +"%F").gz
-
-# Remove snapshot LV
-console_log "Deleting LVM snapshot.."
-sudo lvremove -y ${ARCH_UPDATE_VG}/${ARCH_UPDATE_ROOT_LV}-snap
+console_log "Unmounting external FS..."
+sudo umount ${ARCH_UPDATE_EXTERNAL_MNT}
 
 # Run the update
 console_log "Pacman update..."
