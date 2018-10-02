@@ -46,3 +46,8 @@ CONFIG_OTHER_CONFIGS=(
 
 # tmux_group_attach
 TMUX_SESSION_GROUP="term"
+
+# Display
+LAPTOP_DISPLAY='eDP1'
+EXT_PLACEMENT='above'
+CMD_POST_DISPLAY="${HOME}/.fehbg; i3-msg restart"
