@@ -23,7 +23,7 @@ sudo umount ${ARCH_UPDATE_EXTERNAL_MNT}
 
 # Run the update
 console_log "Pacman update..."
-yay -Syu
+yay -Syu $*
 
 # Log finish
 console_log "$0: Finished."
