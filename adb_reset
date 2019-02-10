@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# Grant tasker write secure perms
+adb shell pm grant net.dinglisch.android.taskerm android.permission.WRITE_SECURE_SETTINGS
