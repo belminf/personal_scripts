@@ -1,48 +1,6 @@
-# Backup directory (used by many scripts)
-BACKUP_DIR="/home/bf/.backups"
-
-
 # arch_update
 ## External FS
 ARCH_UPDATE_EXTERNAL_MNT=/mnt/external_backup
-
-
-# rsync_backup
-## rsync params (useful for exclusions)
-RSYNC_EXCLUDE_FROM="/home/bf/.backup_exclude"
-
-## What to backup (no trailing /)
-RSYNC_BACKUP_SOURCE="/home/bf"
-
-## rsync.net target (no trailing /)
-## Set up in ~/.ssh/config with something like:
-##
-## Host rsync
-##        User <rsync username>
-##	IdentityFile <rsync ssh id file>
-##	HostName <rsync host>
-RSYNC_BACKUP_TARGET="rsync:my_backups"
-
-
-# backup_gdrive
-## rclone params (useful for exclusion)
-GDRIVE_EXTRA_PARAMS="--exclude 'Plex Cloud Sync/*'"
-
-# source, setup via `rclone config`
-GDRIVE_BACKUP_SOURCE="gdrive:"
-
-# local target
-GDRIVE_BACKUP_TARGET="${BACKUP_DIR}/cloud/gdrive"
-
-
-# arch_link_configs
-CONFIG_BACKUP_DIR="${BACKUP_DIR}/configs"
-typeset -A CONFIG_OTHER_CONFIGS
-CONFIG_OTHER_CONFIGS=(
-    [x11]="/etc/X11/xorg.conf.d"
-    [modprobe]="/etc/modprobe.d"
-)
-
 
 # tmux_group_attach
 TMUX_SESSION_GROUP="term"
