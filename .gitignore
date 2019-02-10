@@ -1,4 +1,3 @@
 .environment
 .rsnapshot.conf
 tags
-backups.exceptions
